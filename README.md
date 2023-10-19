@@ -1,18 +1,13 @@
-# Mbed OS Project Template
+# mbed-stm32
 
-I would just use Mbed studio. clangd and vsc intellisense seem to hate mbed...
+template with preconfigured rules for code styling etc
 
+set target for the stm32f401re nucleo board to
 
+NUCLEO-F401RE
 
-## MBED CLI 2 (mbed-tools) (vscode)
+## other ides
 
-Mbed tools are only actually required for initial target configuration.
-Once the mbed-tools system has generated the relevant build configuration for the target board, we can use the build systems directly.
+Visual studio code is certainly possible but troublesome. neither clangd nor intellisense seem to do a good enough job of handling mbed.
 
-In this case, we will use CMake and Ninja, as Ninja will allow us to do incremental builds.
-
-TODO: clang thing
-
-## keil studio not reccomended
-
-Keil studio is stupid. just install mbed studio with the st-link drivers installed. its practically the same interface but superior.
+Never use keil studio. Only use mbed studio. Keil Studio will make debugging annoying. Install mbed studio with the st-link drivers and just use standard debug tools

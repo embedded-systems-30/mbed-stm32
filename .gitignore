@@ -36,3 +36,6 @@
 *.map
 
 BUILD/*
+BUILD
+.mbed
+mbed-os
