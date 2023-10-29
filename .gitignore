@@ -39,3 +39,4 @@ BUILD/*
 BUILD
 .mbed
 mbed-os
+docs/

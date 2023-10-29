@@ -32,8 +32,12 @@ You could similarly do this with other editions of Mbed os, such as older/newer 
 ![shared instance selector](./.attachments/shared-tutorial-1.png)
 ![shared instance file sel](.attachments/shared-tutorial-2.png)
 ![final](./.attachments/shared-tutorial-3.png)
-### extra: git
-`git checkout <commit>` will detach the head to a specific commit. the head is the working place of your repo, but when it is checked out to a commit, is it no longer attached to a particular branch. In short, it means that the git history can easily be lost if changes are added, unless you happened to remember the commit hash (the long string)
+
+## Doxygen
+
+Install doxygen either through its self-installer or via Chocolately.
+GraphViz is also required. Make sure it is added to the PATH on windows when
+installing it.
 
 ## other ideas
 
