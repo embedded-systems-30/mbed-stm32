@@ -18,11 +18,11 @@ jobs:
           ~/mbed-os
           ~/doxygen-awesome-css
         key: ${{ env.mbed-version }}-f401
-    - name: Checkout dependencies if unavail.
-        if: ${{ steps.cache-deps.outputs.cache-hit != 'true' }}
-        uses: actions/checkout@v3
-        with:
-          submodules: "true"
+    - if: ${{ steps.cache-deps.outputs.cache-hit != 'true' }}
+      name: Checkout Dependencies
+      uses: actions/checkout@v3
+      with:
+        submodules: "true"
     - name: Build Doxygen Documentation
       uses: mattnotmitt/doxygen-action@v1.9.5
         with:
