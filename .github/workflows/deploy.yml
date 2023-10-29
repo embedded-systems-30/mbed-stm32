@@ -1,5 +1,7 @@
 name: Doxygen GitHub Pages Deploy Action
-
+permissions:
+  contents: write
+  
 on:
   push:
     branches:
@@ -7,25 +9,12 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Cache dependencies
-      id: cache-deps
-      uses: actions/cache@v3
-      with:
-        path: |
-          ~/mbed-os
-          ~/doxygen-awesome-css
-        key: ${{ env.mbed-version }}-f401
-    - if: ${{ steps.cache-deps.outputs.cache-hit != 'true' }}
-      name: Checkout Dependencies
-      uses: actions/checkout@v3
-      with:
-        submodules: "true"
-    - name: Build Doxygen Documentation
-      uses: mattnotmitt/doxygen-action@v1.9.5
+      - uses: DenverCoder1/doxygen-github-pages-action@v1.3.0
         with:
-          additional-packages: font-fira-code graphviz
-          enable-latex: true
-          
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+          folder: docs/html
+          config_file: Doxyfile
