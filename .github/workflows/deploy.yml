@@ -1,0 +1,31 @@
+name: Doxygen GitHub Pages Deploy Action
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Cache dependencies
+      id: cache-run
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/mbed-os
+          ~/doxygen-awesome-css
+        key: ${{ env.mbed-version }}-f401
+    - name: Checkout dependencies if unavail.
+        if: steps.cache-run.outputs.cache-hit != 'true'
+        uses: actions/checkout@v3
+        with:
+          submodules: "true"
+    - name: Build Doxygen Documentation
+      uses: mattnotmitt/doxygen-action@v1.9.5
+        with:
+          additional-packages: font-fira-code graphviz
+          enable-latex: true
+          
